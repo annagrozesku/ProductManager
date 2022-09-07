@@ -1,3 +1,5 @@
+package ru.netology.productManager.domain;
+
 public class Book extends Product {
 
     protected String author;

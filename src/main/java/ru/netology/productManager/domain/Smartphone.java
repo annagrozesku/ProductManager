@@ -1,3 +1,5 @@
+package ru.netology.productManager.domain;
+
 public class Smartphone extends Product {
 
     protected String manufacturer;

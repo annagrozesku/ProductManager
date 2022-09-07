@@ -1,16 +1,20 @@
+package ru.netology.productManager.repository;
+
+import ru.netology.productManager.domain.Product;
+
 public class ProductRepository {
     protected Product[] products = new Product[0];
 
     public void save(Product product) {
         Product[] tmp = new Product[products.length + 1];
-        for (int i = 0; i < products.length ; i++) {
-            tmp [i] = products[i];
+        for (int i = 0; i < products.length; i++) {
+            tmp[i] = products[i];
         }
         tmp[tmp.length - 1] = product;
         products = tmp;
     }
 
-    public Product [] findAll () {
+    public Product[] findAll() {
         return products;
     }
 
@@ -20,9 +24,9 @@ public class ProductRepository {
         for (Product product : products) {
             if (product.getId() != id) {
                 tmp[copyToIndex] = product;
-                copyToIndex ++;
+                copyToIndex++;
             }
         }
-       products = tmp;
+        products = tmp;
     }
 }
