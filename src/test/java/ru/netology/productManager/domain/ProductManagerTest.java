@@ -52,7 +52,7 @@ public class ProductManagerTest {
 
 
     @Test
-    public void shouldRemovedById() {
+    public void shouldRemoveById() {
 
         manager.add(book2);
         manager.add(book3);
@@ -114,5 +114,21 @@ public class ProductManagerTest {
         Product[] expected = {book2, book3};
 
         Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void ShouldShowAnErrorMessageWhenDeletingANonExistentId() {
+
+        repo.save(book1);
+        repo.save(book2);
+        repo.save(book3);
+        repo.save(book4);
+        repo.save(smartphone1);
+        repo.save(smartphone2);
+        repo.save(smartphone3);
+
+        Assertions.assertThrows(NotFoundException.class, () -> {
+            repo.removeById(172);
+        });
     }
 }
