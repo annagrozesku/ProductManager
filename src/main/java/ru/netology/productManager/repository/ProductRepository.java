@@ -8,6 +8,10 @@ public class ProductRepository {
 
     public void save(Product product) {
 
+        if (this.findById(product.getId()) != null) {
+            throw new AlreadyExistException("Element with id: " + product.getId() + " already exist");
+        }
+
         Product[] tmp = new Product[products.length + 1];
         for (int i = 0; i < products.length; i++) {
             tmp[i] = products[i];
@@ -45,13 +49,4 @@ public class ProductRepository {
         }
         return null;
     }
-
-//    public Product checkId(int id) {
-//        for (Product product : products) {
-//            if (product.getId() != id) {
-//                return product;
-//            }
-//        }
-//        return null;
-//    }
 }
